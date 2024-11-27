@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .verification-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .verification-container h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="verification-container">
+        <h3>Email Verification</h3>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="email">Enter your email address:</label>
+                <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email" />
+            </div>
+            <button type="submit" class="btn btn-primary">Send Verification Link</button><br><br>
+        </form>
+
+        <div id="messageContainer"><% if (typeof message !== 'undefined') { %>
+            <h6 class="text-center text-success">
+                <%= message %>
+            </h6>
+        <% } %></div>
+    </div>
+</body>
+</html>

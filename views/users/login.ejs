@@ -1,0 +1,106 @@
+<% include('../layouts/header.ejs') %>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+
+	<div class="body">
+		<div class="veen">
+			<div class="wrapper">
+				<form id="login" tabindex="500" action="" method="post">
+					<h3>Login</h3>
+					<% if (typeof message !== 'undefined') { %>
+						<h5 class="text-center text-danger">
+							<%= message %>
+						</h5>
+					<% } %>
+                    
+					<div class="mail">
+						<input type="email" name="email" required>
+						<label>Email</label>
+					</div>
+					<div class="passwd">
+						<input type="password" name="password" required>
+						<label>Password</label>
+						<small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters long and contain both letters and numbers.</small>
+					</div>
+					<div class="text-center mt-4">
+						<a href="/forget" class="btn btn-link text-decoration-none text-primary">
+							Forgot Password?
+						</a>
+					</div>
+					<div class="submit">
+						<button type="submit" class="dark">Login</button>
+					</div>
+					<div class="verification">
+						<a href="verification" class="btn btn-outline-light">Verify Email</a>
+					</div>
+				</form>
+			</div>
+			<div class="rgstr-btn splits">
+				<p>Don't have an account?</p>
+				<a href="register" class="btn btn-dark register">Register</a>
+			</div>
+		</div>	
+	</div>
+	
+	
+
+
+	<style type="text/css">
+		.site-link{
+      		padding: 5px 15px;
+			position: fixed;
+			z-index: 99999;
+			background: #fff;
+			box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+			right: 30px;
+			bottom: 30px;
+			border-radius: 10px;
+		}
+		.site-link img{
+			width: 30px;
+			height: 30px;
+		}
+	</style>
+
+<script>
+	
+	function validatePassword(password) {
+	  const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+	  return passwordPattern.test(password);
+	}
+  
+	// Validate the form on submit
+	document.getElementById('registerForm').addEventListener('submit', function(event) {
+	  let isValid = true;
+  
+	  // Clear previous error messages
+	  const errors = document.querySelectorAll('.error');
+	  errors.forEach(function(error) {
+		error.remove();
+	  });
+  
+	  // Validate Password
+	  const password = document.getElementById('password').value;
+	  if (!validatePassword(password)) {
+		isValid = false;
+		const passwordField = document.getElementById('password');
+		const error = document.createElement('span');
+		error.className = 'error text-danger';
+		error.innerText = 'Password must be at least 8 characters long and contain both letters and numbers';
+		passwordField.after(error);
+	  }
+  
+	  // If form is not valid, prevent submission
+	  if (!isValid) {
+		event.preventDefault();
+	  }
+	});
+  </script>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" ></script>
+
+
+<% include('../layouts/footer.ejs') %>
+    
